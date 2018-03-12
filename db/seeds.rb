@@ -5,3 +5,12 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Player.create(name: 'Magnus Carlsen', title: 'GM')
+Player.create(name: 'Levon Aronian', title: 'GM')
+Player.create(name: 'Fabiano Caruana', title: 'GM')
+Player.create(name: 'Sergey Karjakin', title: 'GM')
+Player.create(name: 'Vladimir Kramnik', title: 'GM')
+Player.create(name: 'Maxime Vachier-Lagrave', title: 'GM')
+
+
