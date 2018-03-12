@@ -4,7 +4,8 @@ class PlayersController < ApplicationController
   # GET /players
   # GET /players.json
   def index
-    @players = Player.all.page(params[:page]).per(10)
+    @players = Player.all.page(params[:page]).per(5)
+    # @players = Player.all
   end
 
   # GET /players/1
