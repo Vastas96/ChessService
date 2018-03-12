@@ -18,7 +18,7 @@ class GamesController < ApplicationController
     @game = Game.new
   end
 
-  def new2
+  def file
     uploaded_file = params[:file]
     file_content = uploaded_file.read
     puts file_content
