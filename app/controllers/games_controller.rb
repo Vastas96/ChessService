@@ -18,6 +18,12 @@ class GamesController < ApplicationController
     @game = Game.new
   end
 
+  def new2
+    uploaded_file = params[:file]
+    file_content = uploaded_file.read
+    puts file_content
+  end
+
   # GET /games/1/edit
   def edit
   end
