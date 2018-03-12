@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2018-03-12
+  white_id: 1
+  black_id: 1
+  movetext: MyString
+
+two:
+  date: 2018-03-12
+  white_id: 1
+  black_id: 1
+  movetext: MyString

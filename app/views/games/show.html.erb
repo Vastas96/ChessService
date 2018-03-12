@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @game.date %>
+</p>
+
+<p>
+  <strong>White:</strong>
+  <%= @game.white_id %>
+</p>
+
+<p>
+  <strong>Black:</strong>
+  <%= @game.black_id %>
+</p>
+
+<p>
+  <strong>Movetext:</strong>
+  <%= @game.movetext %>
+</p>
+
+<%= link_to 'Edit', edit_game_path(@game) %> |
+<%= link_to 'Back', games_path %>
