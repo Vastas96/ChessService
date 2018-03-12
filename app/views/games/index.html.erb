@@ -16,8 +16,8 @@
     <% @games.each do |game| %>
       <tr>
         <td><%= game.date %></td>
-        <td><%= game.white_id %></td>
-        <td><%= game.black_id %></td>
+        <td><%= game.white.name %></td>
+        <td><%= game.black.name %></td>
         <td><%= link_to 'Show', game %></td>
         <td><%= link_to 'Edit', edit_game_path(game) %></td>
         <td><%= link_to 'Destroy', game, method: :delete, data: { confirm: 'Are you sure?' } %></td>
