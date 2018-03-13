@@ -25,6 +25,7 @@ class GamesController < ApplicationController
     pgn = uploaded_file.read
     game_params = GameParser.parse(pgn)
     @game = Game.create(game_params)
+    redirect_to :action => "show", :id => @game.id
   end
 
   # GET /games/1/edit
