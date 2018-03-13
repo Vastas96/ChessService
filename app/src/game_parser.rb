@@ -11,12 +11,12 @@ class GameParser
   	white = reformat_name(white)
   	black = reformat_name(black)
 
-    white = Player.find_or_create_by(name: white)
-    black = Player.find_or_create_by(name: black)
+        white = Player.find_or_create_by(name: white)
+        black = Player.find_or_create_by(name: black)
 
   	movetext = get_moves(pgn).chomp
   	
-  	{ date: date, white: white.id, black: black.id, movetext: movetext}
+  	{ date: date, white_id: white.id, black_id: black.id, movetext: movetext}
   end
 
   def self.get(pgn, option)

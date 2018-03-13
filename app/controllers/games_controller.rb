@@ -23,9 +23,8 @@ class GamesController < ApplicationController
   def file
     uploaded_file = params[:file]
     pgn = uploaded_file.read
-    print(pgn)
-    h = GameParser.parse(pgn)
-    print(h)
+    game_params = GameParser.parse(pgn)
+    @game = Game.new(game_params)
   end
 
   # GET /games/1/edit
