@@ -1,0 +1,1 @@
+[Event "Corus A"] [Site "?"] [Date "2010.01.31"] [Round "?"] [White "Carlsen, Magnus"] [Black "Caruana, Fabiano"] [ECO "C77"] [WhiteElo "2810"] [BlackElo "2675"] [Result "1/2-1/2"]  1. e4 e5 2. Nf3 Nc6 3. Bb5 a6 4. Ba4 Nf6 5. d3 d6 6. c3 g6
