@@ -24,7 +24,7 @@ class GamesController < ApplicationController
     uploaded_file = params[:file]
     pgn = uploaded_file.read
     game_params = GameParser.parse(pgn)
-    @game = Game.new(game_params)
+    @game = Game.create(game_params)
   end
 
   # GET /games/1/edit
