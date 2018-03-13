@@ -11,7 +11,7 @@ class GameParser
   	white = reformat_name(white)
   	black = reformat_name(black)
 
-  	movetext = get_moves(pgn)
+  	movetext = get_moves(pgn).chomp
   	
   	{ date: date, white: white, black: black, movetext: movetext}
   end
