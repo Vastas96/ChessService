@@ -1,3 +1,5 @@
+require 'games_parser'
+
 class GamesController < ApplicationController
   before_action :set_game, only: [:show, :edit, :update, :destroy]
 
@@ -20,8 +22,8 @@ class GamesController < ApplicationController
 
   def file
     uploaded_file = params[:file]
-    file_content = uploaded_file.read
-    puts file_content
+    pgn = uploaded_file.read
+    h = GameParser.parse(pgn)
   end
 
   # GET /games/1/edit
