@@ -18,7 +18,7 @@ class GameParser
 
 	moves = get_move_array(movetext)
   	
-  	{ date: date, white_id: white.id, black_id: black.id, movetext: movetext}
+  	{ date: date, white_id: white.id, black_id: black.id, movetext: movetext, moves: moves}
   end
 
   def self.get(pgn, option)
