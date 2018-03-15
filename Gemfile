@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 
-# Paginatio using kaminari
+# Move validaiton using pgn
+gem 'pgn'
+# Pagination using kaminari
 gem 'kaminari'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
