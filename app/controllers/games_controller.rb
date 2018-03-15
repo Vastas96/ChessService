@@ -24,8 +24,12 @@ class GamesController < ApplicationController
     uploaded_file = params[:file]
     pgn = uploaded_file.read
     game_params = GameParser.parse(pgn)
-    @game = Game.create(game_params)
-    redirect_to :action => "show", :id => @game.id
+    if Game.valid?(game_params[:moves])
+      @game = Game.create(game_params)
+      redirect_to :action => "show", :id => @game.id
+    else
+      redirect_to :action => "new"
+    end
   end
 
   # GET /games/1/edit

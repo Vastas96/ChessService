@@ -15,6 +15,8 @@ class GameParser
         black = Player.find_or_create_by(name: black)
 
   	movetext = get_moves(pgn).chomp
+
+	moves = get_move_array(movetext)
   	
   	{ date: date, white_id: white.id, black_id: black.id, movetext: movetext}
   end
@@ -38,5 +40,11 @@ class GameParser
 
   	first = pgn.index('1.', position)
   	pgn[first..-1]
+  end
+
+  def self.get_move_array(movetext)
+    array = movetext.split(' ')
+    array.delete_if { |x| x.include?('.') }
+    array
   end
 end
