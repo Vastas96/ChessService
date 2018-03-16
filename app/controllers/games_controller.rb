@@ -25,6 +25,7 @@ class GamesController < ApplicationController
     pgn = uploaded_file.read
     game_params = GameParser.parse(pgn)
     if Game.valid?(game_params[:moves])
+      game_params.delete(:moves)
       @game = Game.create(game_params)
       redirect_to :action => "show", :id => @game.id
     else
