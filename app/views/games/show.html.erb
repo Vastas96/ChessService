@@ -7,12 +7,12 @@
 
 <p>
   <strong>White:</strong>
-  <%= @game.white.name %>
+  <%= link_to(@game.white.name, :controller => 'players', :action => 'show', :id => @game.white.id) %>
 </p>
 
 <p>
   <strong>Black:</strong>
-  <%= @game.black.name %>
+  <%= link_to(@game.black.name, :controller => 'players', :action => 'show', :id => @game.black.id) %>
 </p>
 
 <p>
