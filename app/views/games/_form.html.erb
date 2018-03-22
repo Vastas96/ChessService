@@ -18,12 +18,12 @@
 
   <div class="field">
     <%= f.label :white %>
-    <%= f.text_field :white %>
+    <%= f.select :white_id, options_for_select(Player.all.map{|p|[p.name, p.id]}) %>
   </div>
 
   <div class="field">
     <%= f.label :black %>
-    <%= f.text_field :black %>
+    <%= f.select :black_id, options_for_select(Player.all.map{|p|[p.name, p.id]}) %>
   </div>
 
   <div class="field">
