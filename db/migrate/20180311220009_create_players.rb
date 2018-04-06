@@ -4,7 +4,7 @@ class CreatePlayers < ActiveRecord::Migration[5.0]
       t.string :name
       t.string :title
 
-      add_index :players, :name, unique: true
+      # add_index :players, :name, unique: true
 
       t.timestamps
     end
