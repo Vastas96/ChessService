@@ -17,4 +17,4 @@ usage:
 
 REST API with CRUD operations for Chess games and players.
 Provides move validation
-Supports JSON
+Supports JSON by adding .json
