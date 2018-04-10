@@ -1,6 +1,7 @@
 class Game < ApplicationRecord
   validates :white, presence: true
   validates :black, presence: true
+  validates :movetext, presence: true
   validates_with MoveValidator
 
   belongs_to :white, class_name: 'Player', foreign_key: 'white_id'
