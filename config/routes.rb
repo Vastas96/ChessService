@@ -4,4 +4,7 @@ Rails.application.routes.draw do
   resources :games
   resources :players
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  get '*unmatched_route' => "application#routing_error"
+  post '*unmatched_route' => "application#routing_error"
 end

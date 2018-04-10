@@ -24,12 +24,11 @@ class GamesController < ApplicationController
     uploaded_file = params[:file]
     pgn = uploaded_file.read
     game_params = GameParser.parse(pgn)
-    if Game.valid?(game_params[:moves])
-      game_params.delete(:moves)
-      @game = Game.create(game_params)
-      redirect_to :action => "show", :id => @game.id
+    @game = Game.new(game_params)
+    if @game.save
+      redirect_to @game, notice: 'Game was successfully created.'
     else
-      redirect_to :action => "new"
+      render :new
     end
   end
 
@@ -45,7 +44,6 @@ class GamesController < ApplicationController
     respond_to do |format|
       if @game.save
         format.html { redirect_to @game, notice: 'Game was successfully created.' }
-        # byebug
         format.json { render :show, status: :created, location: @game }
       else
         format.html { render :new }
@@ -60,7 +58,6 @@ class GamesController < ApplicationController
     respond_to do |format|
       if @game.update(game_params)
         format.html { redirect_to @game, notice: 'Game was successfully updated.' }
-        byebug
         format.json { render :show, status: :ok, location: @game }
       else
         format.html { render :edit }
