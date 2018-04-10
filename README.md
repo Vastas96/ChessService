@@ -15,6 +15,6 @@ usage:
 * /players
 * /games
 
-REST API with CRUD operations for Chess games and players.
-Provides move validation
-Supports JSON by adding .json to url
+* REST API with CRUD operations for Chess games and players.
+* Provides move validation
+* Supports JSON by adding .json to url
