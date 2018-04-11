@@ -14,12 +14,12 @@ services:
     depends_on:
       - db
   app:
-    build: .UsersPostsComments//Service
+    build: ./UsersPostsComments/Service
     image: tautvis/service
     working_dir: /UsersPostsComments/Service
     volumes:
-      - .UsersPostsComments/Service:/Service
-      - ~UsersPostsComments/.m2:/root/.m2
+      - ./UsersPostsComments/Service:/Service
+      - ~/UsersPostsComments/.m2:/root/.m2
     ports:
       - "80:80"
     command: mvn clean spring-boot:run
