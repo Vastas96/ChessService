@@ -20,11 +20,8 @@
   <%= @game.movetext %>
 </p>
 
-<%= form_tag "/games/update", :multipart => true do %>
-  <p>
-    <%= f.label :comment %><br />
-    <%= f.text_area :comment %>
-  </p>
+<%= form_tag '/games/update', :multipart => true do %>
+  <label for="file">Enter a comment</label> <%= text_area "comment" %>
   <%= submit_tag "Submit" %>
 <% end %>
 
