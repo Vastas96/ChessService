@@ -10,8 +10,8 @@ class Game < ApplicationRecord
   belongs_to :white, class_name: 'Player', foreign_key: 'white_id'
   belongs_to :black, class_name: 'Player', foreign_key: 'black_id'
 
-  def as_json(options)
-    super.merge(:include=>[:comments])
+  def as_json
+    super.merge(comments: comments)
   end
 
   private
@@ -25,10 +25,10 @@ class Game < ApplicationRecord
   end
 
   def delete_post
-  	Post.delete(post_id)
+    Post.delete(post_id)
   end
 
   def comments
-  	Post.find(post_id).comments
+    Post.find(post_id).comments unless post_id.nil?
   end
 end
