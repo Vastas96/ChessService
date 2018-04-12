@@ -4,7 +4,7 @@ class Game < ApplicationRecord
   validates :movetext, presence: true
   validates_with MoveValidator
 
-  after_save :create_post, on: :create
+  after_create :create_post, on: :create
   before_destroy :delete_post
 
   belongs_to :white, class_name: 'Player', foreign_key: 'white_id'
@@ -25,7 +25,7 @@ class Game < ApplicationRecord
     post.save
     # Since I cannot choose the id of the post
     # I need to create a atribute to map them
-    post_id = post_id
+    self.update_attributes!(post_id: post.id)
   end
 
   def delete_post
@@ -33,6 +33,8 @@ class Game < ApplicationRecord
   end
 
   def comments
-    Post.find(post_id).comments unless post_id.nil?
+    return nil if post_id.nil?
+    comments = Comment.all
+    comments.delete_if { |a| a.postId != post_id }
   end
 end
