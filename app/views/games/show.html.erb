@@ -22,7 +22,7 @@
 
 <br/>
 
-<%= form_tag '/games/update', :multipart => true do %>
+<%= form_tag '/games/#{@game.id}/update', :multipart => true do %>
   <label for="file">Enter a comment</label> <%= text_field_tag "comment" %>
   <%= submit_tag "Submit" %>
 <% end %>
