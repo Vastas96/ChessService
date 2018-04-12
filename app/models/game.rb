@@ -16,8 +16,13 @@ class Game < ApplicationRecord
 
   private
 
-  def create_post(user_id = 1)
-  	post = Post.new(userId: user_id, title: "#{id}. Game betweet #{white.name} and #{black.name}", body: movetext)
+  def create_post
+  	user = User.first || User.new(username: "ChessAdmin", email: "admin@chess.com").save
+  	post = Post.new(
+  	  userId: user.id,
+  	  title: "#{id}. Game betweet #{white.name} and #{black.name}",
+  	  body: movetext
+  	  )
   	post.save
   	# Since I cannot choose the id of the post
   	# I need to create a atribute to map them
