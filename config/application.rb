@@ -1,5 +1,4 @@
 require_relative 'boot'
-require 'yaml'
 
 require 'rails/all'
 
@@ -15,6 +14,5 @@ module ChessService
     config.autoload_paths << Rails.root.join('app/src')
     # config.api_only = true
     # config.debug_exception_response_format = :default
-    ::Conf = YAML::load(File.open(Rails.root.join('config', 'database.yml')))
   end
 end
