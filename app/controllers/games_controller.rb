@@ -55,15 +55,12 @@ class GamesController < ApplicationController
   # PATCH/PUT /games/1
   # PATCH/PUT /games/1.json
   def update
-    if params.key?(:comment)
-      respond_to do |format|
+    respond_to do |format|
+      if params.key?(:comment)
         create_comment(params[:comment])
         format.html { redirect_to @game, notice: 'Comment was successfully saved.' }
         format.json { render :show, status: :ok, location: @game }
-      end
-    end
-    elsif @game.update(game_params)
-      respond_to do |format|
+      elsif @game.update(game_params)
         format.html { redirect_to @game, notice: 'Game was successfully updated.' }
         format.json { render :show, status: :ok, location: @game }
       else
@@ -76,6 +73,7 @@ class GamesController < ApplicationController
   def create_comment(comment)
     user = User.first || User.new(username: "ChessAdmin", email: "admin@chess.com")
     user.save
+    @game.create_post if @game.post_id.nil?
     com = Comment.new(userId: user.id, postId: @game.post_id, body: comment)
     com.save
   end

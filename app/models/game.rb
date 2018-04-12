@@ -19,8 +19,8 @@ class Game < ApplicationRecord
     user.save
     post = Post.new(
       userId: user.id,
-      title: "#{id}. Game between #{white.name} and #{black.name}",
-      body: movetext
+      title: "Game id: #{id}",
+      body: "Game between #{white.name} and #{black.name}"
     )
     post.save
     # Since I cannot choose the id of the post
