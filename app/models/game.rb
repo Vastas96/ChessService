@@ -15,17 +15,17 @@ class Game < ApplicationRecord
   end
 
   def create_post
-  	user = User.first || User.new(username: "ChessAdmin", email: "admin@chess.com")
+    user = User.first || User.new(username: "ChessAdmin", email: "admin@chess.com")
     user.save
     post = Post.new(
-  	  userId: user.id,
-  	  title: "#{id}. Game betweet #{white.name} and #{black.name}",
-  	  body: movetext
-  	)
-  	post.save
-  	# Since I cannot choose the id of the post
-  	# I need to create a atribute to map them
-  	update(post_id: post.id)
+      userId: user.id,
+      title: "#{id}. Game between #{white.name} and #{black.name}",
+      body: movetext
+    )
+    post.save
+    # Since I cannot choose the id of the post
+    # I need to create a atribute to map them
+    post_id = post_id
   end
 
   def delete_post
