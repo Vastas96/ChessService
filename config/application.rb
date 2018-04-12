@@ -15,6 +15,6 @@ module ChessService
     config.autoload_paths << Rails.root.join('app/src')
     # config.api_only = true
     # config.debug_exception_response_format = :default
-    ::Conf = YAML::load(File.open('config.yml'))
+    ::Conf = YAML::load(File.open(Rails.root.join('config', 'database.yml')))
   end
 end
