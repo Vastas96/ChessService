@@ -1,5 +1,3 @@
-json.partial!
-
 json.white do
   json.name @game.white.name
   json.url url_for(@game.white)
