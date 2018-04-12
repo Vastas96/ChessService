@@ -56,8 +56,8 @@ class GamesController < ApplicationController
   # PATCH/PUT /games/1.json
   def update
     respond_to do |format|
-      if game_params.key?(:comment)
-        create_comment(game_params[:comment])
+      if params.key?(:comment)
+        create_comment(params[:comment])
       end
       if @game.update(game_params)
         format.html { redirect_to @game, notice: 'Game was successfully updated.' }
@@ -72,7 +72,8 @@ class GamesController < ApplicationController
   def create_comment(comment)
     user = User.first || User.new(username: "ChessAdmin", email: "admin@chess.com")
     user.save
-    Comment.new(userId: user.id, postId: @game.post_id, body: comment)
+    com = Comment.new(userId: user.id, postId: @game.post_id, body: comment)
+    com.save
   end
 
   # DELETE /games/1
@@ -93,6 +94,6 @@ class GamesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def game_params
-      params.require(:game).permit(:date, :white_id, :black_id, :movetext)
+      params.require(:game).permit(:date, :white_id, :black_id, :movetext, :comment, nil)
     end
 end
