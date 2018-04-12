@@ -58,6 +58,8 @@ class GamesController < ApplicationController
     respond_to do |format|
       if params.key?(:comment)
         create_comment(params[:comment])
+        format.html { redirect_to @game, notice: 'Comment was successfully saved.' }
+        format.json { render :show, status: :ok, location: @game }
       end
       if @game.update(game_params)
         format.html { redirect_to @game, notice: 'Game was successfully updated.' }
