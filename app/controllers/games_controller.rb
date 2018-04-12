@@ -56,6 +56,9 @@ class GamesController < ApplicationController
   # PATCH/PUT /games/1.json
   def update
     respond_to do |format|
+      if game_params.key?(:comment)
+        create_comment(game_params[:comment])
+      end
       if @game.update(game_params)
         format.html { redirect_to @game, notice: 'Game was successfully updated.' }
         format.json { render :show, status: :ok, location: @game }
@@ -64,6 +67,12 @@ class GamesController < ApplicationController
         format.json { render json: @game.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def create_comment(comment)
+    user = User.first || User.new(username: "ChessAdmin", email: "admin@chess.com")
+    user.save
+    Comment.new(userId: user.id, postId: @game.post_id, body: comment)
   end
 
   # DELETE /games/1
