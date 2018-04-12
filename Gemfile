@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+# For communicating with other RESTfull API
+gem 'activeresource'
 # Move validaiton using pgn
 gem 'pgn'
 # Pagination using kaminari
