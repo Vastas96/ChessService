@@ -17,8 +17,9 @@ class Game < ApplicationRecord
   private
 
   def create_post
-  	user = User.first || User.new(username: "ChessAdmin", email: "admin@chess.com").save
-  	post = Post.new(
+  	user = User.first || User.new(username: "ChessAdmin", email: "admin@chess.com")
+        user.save
+        post = Post.new(
   	  userId: user.id,
   	  title: "#{id}. Game betweet #{white.name} and #{black.name}",
   	  body: movetext
