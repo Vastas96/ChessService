@@ -21,7 +21,12 @@
 </p>
 
 <%= form_tag '/games/update', :multipart => true do %>
-  <label for="file">Enter a comment</label> <%= text_area "comment" %>
+  <%= form_for(game) do |f| %>
+    <div class="field">
+	  <%= f.label :movetext %>
+	  <%= f.text_field :movetext %>
+	</div>
+  <%= end %>
   <%= submit_tag "Submit" %>
 <% end %>
 
