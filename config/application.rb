@@ -14,5 +14,6 @@ module ChessService
     config.autoload_paths << Rails.root.join('app/src')
     # config.api_only = true
     # config.debug_exception_response_format = :default
+    ::SuperUser = User.new(username: "ChessAdmin", "admin@chess.com") if ::SuperUser.nil?
   end
 end
