@@ -14,8 +14,6 @@ class Game < ApplicationRecord
     super.merge(comments: comments)
   end
 
-  private
-
   def create_post
   	user = User.first || User.new(username: "ChessAdmin", email: "admin@chess.com")
         user.save
