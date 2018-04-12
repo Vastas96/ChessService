@@ -1,11 +1,8 @@
 # README
 
-Chess Service
+Chess Service with Comments
 
-* docker-compose build
-* docker-compose up
-
-In another terminal create and migrate db
+* docker-compose up (--build) -d
 
 * docker-compose run web rails db:create
 * docker-compose run web rails db:migrate
@@ -18,3 +15,8 @@ usage:
 * REST API with CRUD operations for Chess games and players.
 * Provides move validation
 * Supports JSON by adding .json to url
+
+* Added fellow colleague's microservice:
+`https://github.com/ExtraCurricular/UsersPostsComments`
+
+PATCH /games/:id.json { "comment": "Your comment here" }
