@@ -55,13 +55,15 @@ class GamesController < ApplicationController
   # PATCH/PUT /games/1
   # PATCH/PUT /games/1.json
   def update
-    respond_to do |format|
-      if params.key?(:comment)
+    if params.key?(:comment)
+      respond_to do |format|
         create_comment(params[:comment])
         format.html { redirect_to @game, notice: 'Comment was successfully saved.' }
         format.json { render :show, status: :ok, location: @game }
       end
-      if @game.update(game_params)
+    end
+    elsif @game.update(game_params)
+      respond_to do |format|
         format.html { redirect_to @game, notice: 'Game was successfully updated.' }
         format.json { render :show, status: :ok, location: @game }
       else
