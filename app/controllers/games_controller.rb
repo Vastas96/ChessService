@@ -44,7 +44,7 @@ class GamesController < ApplicationController
     respond_to do |format|
       if @game.save
         format.html { redirect_to @game, notice: 'Game was successfully created.' }
-        format.json { render :show, status: :created, location: @game }
+        format.json { render :show, status: :ok, location: game_url(@game, format: :json) }
       else
         format.html { render :new }
         format.json { render json: @game.errors, status: :unprocessable_entity }
