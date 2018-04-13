@@ -45,7 +45,6 @@ class Game < ApplicationRecord
       comments = Comment.all
       comments.delete_if { |a| a.postId != post_id }
     rescue Errno::EHOSTUNREACH
-      "Error: Could not reach Microservice"
     end
   end
 end
