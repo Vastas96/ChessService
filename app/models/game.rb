@@ -15,17 +15,20 @@ class Game < ApplicationRecord
   end
 
   def create_post
-    user = User.first || User.new(username: "ChessAdmin", email: "admin@chess.com")
-    user.save
-    post = Post.new(
-      userId: user.id,
-      title: "Game id: #{id}",
-      body: "Game between #{white.name} and #{black.name}"
-    )
-    post.save
-    # Since I cannot choose the id of the post
-    # I need to create a atribute to map them
-    self.update_attributes!(post_id: post.id)
+    begin
+      user = User.first || User.new(username: "ChessAdmin", email: "admin@chess.com")
+      user.save
+      post = Post.new(
+        userId: user.id,
+        title: "Game id: #{id}",
+        body: "Game between #{white.name} and #{black.name}"
+      )
+      post.save
+      # Since I cannot choose the id of the post
+      # I need to create a atribute to map them
+      self.update_attributes!(post_id: post.id)
+    rescue Errno::EHOSTUNREACH
+    end
   end
 
   def delete_post
