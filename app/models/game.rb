@@ -32,7 +32,11 @@ class Game < ApplicationRecord
   end
 
   def delete_post
-    Post.delete(post_id)
+    return unless post_id.nil?
+    begin
+      Post.delete(post_id)
+    rescue Errno::EHOSTUNREACH
+    end
   end
 
   def comments
