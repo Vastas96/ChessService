@@ -47,4 +47,12 @@ class Game < ApplicationRecord
     rescue Errno::EHOSTUNREACH
     end
   end
+
+  def post
+    return nil if post_id.nil?
+    begin
+      post = Post.find(post_id)
+    rescue Errno::EHOSTUNREACH
+    end
+  end
 end
