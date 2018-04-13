@@ -34,7 +34,11 @@ class Game < ApplicationRecord
 
   def comments
     return nil if post_id.nil?
-    comments = Comment.all
-    comments.delete_if { |a| a.postId != post_id }
+    begin
+      comments = Comment.all
+      comments.delete_if { |a| a.postId != post_id }
+    rescue Errno::EHOSTUNREACH
+      "Error: Could not reach Microservice"
+    end
   end
 end
