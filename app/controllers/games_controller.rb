@@ -57,9 +57,13 @@ class GamesController < ApplicationController
   def update
     respond_to do |format|
       if params.key?(:comment)
-        create_comment(params[:comment])
-        format.html { redirect_to @game, notice: 'Comment was successfully saved.' }
-        format.json { render :show, status: :ok, location: @game }
+        if create_comment(params[:comment])
+          format.html { redirect_to @game, notice: 'Comment was successfully saved.' }
+          format.json { render :show, status: :ok, location: @game }
+        else
+          format.html { redirect_to @game, notice: 'Comment was not added. Could not reach microservice.' }
+          format.json { render :show, status: :unprocessable_entity, location: @game }
+        end
       elsif @game.update(game_params)
         format.html { redirect_to @game, notice: 'Game was successfully updated.' }
         format.json { render :show, status: :ok, location: @game }
@@ -71,11 +75,15 @@ class GamesController < ApplicationController
   end
 
   def create_comment(comment)
-    user = User.first || User.new(username: "ChessAdmin", email: "admin@chess.com")
-    user.save
-    @game.create_post if @game.post_id.nil?
-    com = Comment.new(userId: user.id, postId: @game.post_id, body: comment)
-    com.save
+    begin
+      user = User.first || User.new(username: "ChessAdmin", email: "admin@chess.com")
+      user.save
+      @game.create_post if @game.post_id.nil?
+      com = Comment.new(userId: user.id, postId: @game.post_id, body: comment)
+      com.save
+    rescue Errno::EHOSTUNREACH
+      false
+    end
   end
 
   # DELETE /games/1
