@@ -19,4 +19,7 @@ usage:
 * Added fellow colleague's microservice:
 `https://github.com/ExtraCurricular/UsersPostsComments`
 
-PATCH /games/:id.json { "comment": "Your comment here" }
+* PATCH /games/:id.json { "comment": "Your comment here" }
+* GET /games.json?embedded=true
+* GET /games/:id.json?embedded=true
+
