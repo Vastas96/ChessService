@@ -44,7 +44,9 @@ class Game < ApplicationRecord
     begin
       comments = Comment.all
       comments.delete_if { |a| a.postId != post_id }
-    rescue Errno::EHOSTUNREACH
+    # rescue Errno::EHOSTUNREACH
+    # end
+    rescue Exception
     end
   end
 
@@ -52,7 +54,9 @@ class Game < ApplicationRecord
     return nil if post_id.nil?
     begin
       post = Post.find(post_id)
-    rescue Errno::EHOSTUNREACH
+    # rescue Errno::EHOSTUNREACH
+    # end
+    rescue Exception
     end
   end
 end
