@@ -16,8 +16,8 @@ end
 json.extract! game, :movetext, :created_at, :updated_at
 
 if params[:embedded]
-  json.post game.post
-  json.comments game.comments
+  json.post game.post if params[:embedded].include?('post')
+  json.comments game.comments if params[:embedded].include?('comments')
 else
   json.post_id game.post_id
 end
