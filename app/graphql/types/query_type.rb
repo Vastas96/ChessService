@@ -10,4 +10,20 @@ Types::QueryType = GraphQL::ObjectType.define do
       "Hello World!"
     }
   end
+
+  field :player, Type::PlayerType do
+    argument :id, types.Int
+
+    resolve ->(_obj, args, _ctx) {
+      Player.find(args[:id])
+    }
+  end
+
+  field :game, Type::GameType do
+    argument :id, types.Int
+
+    resolve ->(_obj, args, _ctx) {
+      Game.find(args[:id])
+    }
+  end
 end
